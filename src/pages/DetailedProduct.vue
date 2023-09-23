@@ -125,6 +125,14 @@ export default {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 0 5px #2f111e;
+  overflow-y: scroll;
+  max-height: 700px;
+  &::-webkit-scrollbar-track{
+    width: 6px !important;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: #461959 !important;
+  }
   .close{
     position: absolute;
     right: 10px;
@@ -134,12 +142,13 @@ export default {
     z-index: 9;
     button{
       padding: 5px 8px;
-      background-color: transparent;
-      border: 1px solid #313866;
       transition: 0.3s;
+      background: #313866;
+      color: #fff;
+      border: 1px solid;
       &:hover{
-        background: #313866;
-        color: #fff;
+        background-color: transparent;
+        border: 1px solid #313866;
       }
     }
   }
