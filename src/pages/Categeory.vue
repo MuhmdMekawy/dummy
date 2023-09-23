@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <Loading v-if="products === null"/>
+  <Loading v-if="products !== null"/>
   <div class="category-page" v-if="products !== null">
     <div class="container">
       <div class="content">

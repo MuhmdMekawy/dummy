@@ -21,8 +21,9 @@ export default {
   background: #eee3da;
 }
 .loader {
-  width: 48px;
-  height: 48px;
+  // width: 48px;
+  // height: 48px;
+  margin: 0 auto;
   border: 5px solid #79155B;
   border-radius: 50%;
   display: inline-block;
