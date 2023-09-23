@@ -71,7 +71,7 @@ export default {
     }
     @media (max-width : 450px){
       grid-template-columns: repeat( 1 , 1fr);
-      margin: 0 30px;
+      margin: 0 10px;
     }
     .cont{
       border: 2px solid #313866;

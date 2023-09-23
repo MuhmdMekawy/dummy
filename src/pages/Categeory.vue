@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <Loading v-if="products !== null"/>
+  <Loading v-if="products === null"/>
   <div class="category-page" v-if="products !== null">
     <div class="container">
       <div class="content">
@@ -66,9 +66,10 @@ export default {
       }
       @media (max-width : 450px){
         grid-template-columns: repeat( 1 , 1fr);
-        margin: 0 30px;
+        margin: 0 10px;
       }
       .cont{
+        width: 100%;
         border: 2px solid #313866;
         border-radius: 5px;
         padding: 0;
