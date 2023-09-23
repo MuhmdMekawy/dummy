@@ -42,6 +42,16 @@ export default {
   grid-template-columns: repeat( 4 , 1fr);
   gap: 20px;
   padding: 30px 0;
+  @media (max-width : 991px){
+    grid-template-columns: repeat( 3 , 1fr);
+  }
+  @media (max-width : 767px){
+    grid-template-columns: repeat( 2 , 1fr);
+  }
+  @media (max-width : 450px){
+    grid-template-columns: repeat( 1 , 1fr);
+    margin: 0 30px;
+  }
   .cont{
     padding: 50px 0;
     text-align: center;
