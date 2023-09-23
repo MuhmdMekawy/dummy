@@ -127,12 +127,7 @@ export default {
   box-shadow: 0 0 5px #2f111e;
   overflow-y: scroll;
   max-height: 700px;
-  &::-webkit-scrollbar-track{
-    width: 6px !important;
-  }
-  &::-webkit-scrollbar-thumb{
-    background-color: #461959 !important;
-  }
+
   .close{
     position: absolute;
     right: 10px;
