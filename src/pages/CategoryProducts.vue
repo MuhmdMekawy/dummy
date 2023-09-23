@@ -35,7 +35,7 @@ export default {
     <div class="container">
       <h2><span>{{ getCateName }}</span> Section</h2>
       <div class="content">
-        <RouterLink :to="'/product/'+ product.id"  class="cont" v-if="products !== null" v-for="product in products" :key="product.id">
+        <RouterLink :to="'/product/'+ product.id"  data-aos='zoom-in' data-aos-easing='ease-out-cubic' data-aos-duration='1000' class="cont" v-if="products !== null" v-for="product in products" :key="product.id">
           <div class="image"><img :src="product.thumbnail" alt="product" loading="lazy"></div>
           <h3>{{ product.title }}</h3>
         </RouterLink >

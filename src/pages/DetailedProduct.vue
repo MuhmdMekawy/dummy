@@ -59,6 +59,7 @@ export default {
 <template>
   <Loading v-if="items === null"/>
   <div class="popup" v-if="showPopUp === true">
+    <div class="close"><button @click="showPopUp = false">X</button></div>
     <div class="image"><div class="badge bg-warning">{{ items.rating }}</div><img :src="items.thumbnail" alt="product image" loading="lazy"></div>
     <div class="text">
       <h4>{{ items.title }}</h4>
@@ -116,7 +117,7 @@ export default {
   transform: translate(-50% , -50%);
   z-index: 99;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   gap: 5px;
   background: #461959;
@@ -124,12 +125,33 @@ export default {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 0 5px #2f111e;
+  .close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #461959;
+    font-size: 20px;
+    z-index: 9;
+    button{
+      padding: 5px 8px;
+      background-color: transparent;
+      border: 1px solid #313866;
+      transition: 0.3s;
+      &:hover{
+        background: #313866;
+        color: #fff;
+      }
+    }
+  }
   @media (max-width : 500px){
     flex-direction: column;
   }
   .image{
-    height: 400px;
+    width: 100%;
     position: relative;
+    img{
+      object-fit: contain;
+    }
     .badge{
       position: absolute;
       left: 10px;

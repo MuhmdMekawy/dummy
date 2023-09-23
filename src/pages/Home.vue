@@ -24,10 +24,10 @@ export default {
 
 <template>
   <Loading v-if="categories === null" />
-  <div class="home-page" v-if="categories !== null">
+  <div class="home-page " v-if="categories !== null">
     <div class="container">
       <div class="content">
-        <routerLink :to="'/category/' + category" class="cont" v-for="category in categories" :key="category">
+        <routerLink :to="'/category/' + category" class="cont"  data-aos='zoom-in' data-aos-easing='ease-out-cubic' data-aos-duration='2000' v-for="category in categories" :key="category">
           <h3>{{ category }}</h3>
         </routerLink>
       </div>

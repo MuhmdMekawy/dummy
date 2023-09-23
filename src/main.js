@@ -6,6 +6,9 @@ import Home from './pages/Home.vue'
 import DetailedProduct from './pages/DetailedProduct.vue'
 import CategoryProducts from './pages/CategoryProducts.vue'
 import NotFound from './pages/NotFound.vue'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -17,5 +20,5 @@ const router = createRouter({
     { path: '/:catchAll(.*)', component: NotFound },
   ]
 })
-
+AOS.init();
 createApp(App).use(router).mount('#app')

@@ -30,7 +30,7 @@ export default {
   <div class="category-page" v-if="products !== null">
     <div class="container">
       <div class="content">
-        <RouterLink :to="'/product/'+ product.id" class="cont" v-for="product in products" :key="product.id">
+        <RouterLink :to="'/product/'+ product.id" class="cont" data-aos='zoom-in' data-aos-easing='ease-out-cubic' data-aos-duration='1000' v-for="product in products" :key="product.id">
           <div class="image"><img :src="product.thumbnail" alt="product" loading="lazy"></div>
           <h3>{{ product.title }}</h3>
           <h4 class="badge bg-danger">{{ product.category }}</h4>
