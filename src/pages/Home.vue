@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios'
-
+import Loading from '../components/Loading.vue'
 export default {
   name: 'Home', 
   data() {
@@ -8,6 +8,7 @@ export default {
       categories : null
     }
   },
+  components :{Loading},
   methods: {
     async fetchData() {
       await axios.get('https://dummyjson.com/products/categories').then((res) => {
@@ -22,13 +23,13 @@ export default {
 </script>
 
 <template>
-  <div class="home-page">
-    <h1 class="navigate">Welcome in our Store</h1>
+  <Loading v-if="categories === null" />
+  <div class="home-page" v-if="categories !== null">
     <div class="container">
       <div class="content">
-        <div class="cont" v-if="categories !== null" v-for="category in categories" :key="category">
+        <routerLink :to="'/category/' + category" class="cont" v-for="category in categories" :key="category">
           <h3>{{ category }}</h3>
-        </div>
+        </routerLink>
       </div>
     </div>
   </div>
@@ -45,14 +46,14 @@ export default {
     padding: 50px 0;
     text-align: center;
     background: #141E46;
-    color: #fff;
+    color: #fff !important;
     border-radius: 5px;
     transition: 0.3s;
     border: 1px solid #141E46;
     user-select: none;
     &:hover{
       background: transparent;
-      color: #141E46;
+      color: #141E46 !important;
     }
     h3{
       text-transform: capitalize;

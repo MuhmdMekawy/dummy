@@ -4,16 +4,17 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Categeory from './pages/Categeory.vue'
 import Home from './pages/Home.vue'
 import DetailedProduct from './pages/DetailedProduct.vue'
-
-
+import CategoryProducts from './pages/CategoryProducts.vue'
+import NotFound from './pages/NotFound.vue'
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     { path: '/home', redirect: '/' },
-    { path: '/categeory', name : 'Home' , component: Home },
     { path: '/', name : 'Categeory' , component: Categeory },
+    { path: '/categeory', name : 'Home' , component: Home },
+    { path: '/category/:name', name : 'CategoryProducts' , component: CategoryProducts },
     { path: '/product/:id', name : 'DetailedProduct' , component: DetailedProduct },
-    // { path: '/:catchAll(.*)', component: NotFound },
+    { path: '/:catchAll(.*)', component: NotFound },
   ]
 })
 

@@ -1,14 +1,19 @@
 <script>
 import axios from 'axios'
+import Loading from '../components/Loading.vue'
+
 export default {
   name: 'Categeory',
   data() {
     return {
-      products : null
+      products: null,
+      activePagination : '1'
     }
   },
+  components : {Loading},
   methods: {
     async fetchData(skip) {
+      window.scrollTo(0,0)
       await axios.get(`https://dummyjson.com/products?limit=25&skip=${skip * 25}`).then((res) => {
         return this.products = res.data.products
       })
@@ -21,16 +26,24 @@ export default {
 </script>
 
 <template>
-  <div class="category-page">
-    <h1 class="navigate">Welcome in our Store</h1>
+  <Loading v-if="products === null"/>
+  <div class="category-page" v-if="products !== null">
     <div class="container">
       <div class="content">
         <RouterLink :to="'/product/'+ product.id" class="cont" v-for="product in products" :key="product.id">
           <div class="image"><img :src="product.thumbnail" alt="product" loading="lazy"></div>
           <h3>{{ product.title }}</h3>
-          <h4 class="badge bg-warning">{{ product.category }}</h4>
+          <h4 class="badge bg-danger">{{ product.category }}</h4>
         </RouterLink >
       </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li :class="'page-item '+ (activePagination === '1' ? 'active' : '')" @click="fetchData(0), activePagination ='1'"><p class="page-link">1</p></li>
+          <li :class="'page-item '+ (activePagination === '2' ? 'active' : '')" @click="fetchData(1) ,activePagination ='2'"><p class="page-link">2</p></li>
+          <li :class="'page-item '+ (activePagination === '3' ? 'active' : '')" @click="fetchData(2), activePagination ='3'"><p class="page-link">3</p></li>
+          <li :class="'page-item '+ (activePagination === '4' ? 'active' : '')" @click="fetchData(3), activePagination ='4'"><p class="page-link">4</p></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
@@ -60,12 +73,21 @@ export default {
         border-radius: 5px;
         padding: 0;
         position: relative;
+        overflow: hidden;
+        &:hover{
+          h3{
+            background: #C23373 !important;
+            color: #fff !important;
+          }
+        }
         h3{
-          font-size: 14px;
+          font-size: 12px;
           margin-bottom: 10px;
           text-align: center;
           padding: 10px 0;
           margin-bottom: 0;
+          color: #313866;
+          transition: 0.3s;
         }
         h4{
           font-size: 14px;
@@ -77,6 +99,21 @@ export default {
           height: 230px;
           img{
             object-position: center;
+          }
+        }
+      }
+    }
+    .pagination{
+      justify-content: center;
+      margin: 20px 0;
+      .page-item{
+        .page-link{
+          cursor: pointer;
+          user-select: none;
+          transition: 0.3s;
+          &:hover{
+            background: #313866 !important;
+            color: #fff !important;
           }
         }
       }
