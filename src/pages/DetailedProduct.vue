@@ -63,7 +63,11 @@ export default {
     <div class="image"><div class="badge bg-warning">{{ items.rating }}</div><img :src="items.thumbnail" alt="product image" loading="lazy"></div>
     <div class="text">
       <h4>{{ items.title }}</h4>
-      <div class="buttons"><button @click="productCount !==5 ? productCount++ : null">+</button><span>{{ productCount }}</span><button @click="productCount !==1 ? productCount-- : null">-</button></div>
+      <div class="buttons">
+        <button :disabled="productCount === 5 ? 'disabled' : null" @click="productCount++">+</button>
+        <span>{{ productCount }}</span>
+        <button  :disabled="productCount === 1 ? 'disabled' : null" @click="productCount--">-</button>
+      </div>
       <h5>Total : {{ getFullPrice }}</h5>
       <button @click="buyProduct">Buy</button>
     </div>
